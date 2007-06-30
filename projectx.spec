@@ -8,19 +8,17 @@
 Summary:	ProjectX - a free Java based demux utility
 Name:		%name
 Version:	%version
-Release:	%mkrel 5
+Release:	%mkrel 6
 License:	GPL
 URL:		http://sourceforge.net/projects/project-x
 Source:		%{Name}_Source_eng_%{version}.tar.bz2
 Source1:	%{Name}_LanguagePack_%{version}.zip
-Source2:	projectx.conf
 Group:		Video
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 Requires:	java
 Requires:	jpackage-utils
 Requires:	jakarta-commons-net
 Requires:	jakarta-oro
-Requires:	jre-cacao
 BuildRequires:	java-devel
 BuildRequires:	jpackage-utils
 BuildRequires:	jakarta-commons-net
@@ -45,7 +43,9 @@ dos2unix htmls/*.html htmls/*/*.html
 
 perl -pi -e 's,classpath [a-z0-9\.\/:-]*,classpath \$CLASSPATH,' build.sh
 perl -pi -e 's,^javac ,%javac ,' build.sh
-perl -pi -e 's,^jar ,%jar ,' build.sh
+# We call jar manually to workaround
+# http://gcc.gnu.org/bugzilla/show_bug.cgi?id=32516
+perl -pi -e 's,^jar ,#jar ,' build.sh
 
 perl -pi -e 's,^Class-Path:.*\n,,' MANIFEST.MF
 
@@ -54,14 +54,13 @@ perl -pi -e 's,Exec=.*,Exec=%{_bindir}/%{name},' %name.desktop
 
 perl -pi -e 's/\r$//g' *.txt
 
-# This forces cacao when GUI is used
-# Classpath of our GCJ is too old for it (doesn't even start)
-# My test indicates demuxing with jamvm being 10x slower than with GCJ
-cp -a %SOURCE2 .
-
 %build
 export CLASSPATH=$(build-classpath commons-net oro)
 sh -ex build.sh
+
+cd build
+%jar cfvm ../ProjectX.jar ../MANIFEST.MF *
+cd -
 
 %jar -i %Name.jar
 
@@ -100,13 +99,10 @@ cat > %{buildroot}%{_menudir}/%{name} << EOF
 EOF
 
 desktop-file-install --vendor="" \
-  --add-category="X-MandrivaLinux-Multimedia-Video" \
   --add-category="Java" \
   --add-category="AudioVideo" \
   --add-category="AudioVideoEditing" \
   --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
-
-install -D -m644 projectx.conf %{buildroot}%{_sysconfdir}/java/%name.conf
 
 %clean
 rm -rf %{buildroot}
@@ -127,7 +123,6 @@ rm -rf %{buildroot}
 %defattr(0644,root,root,0755)
 %doc ReleaseNotes* ReadMe.txt htmls
 %attr(0755,root,root) %{_bindir}/%{name}
-%config(noreplace) %{_sysconfdir}/java/%name.conf
 %{_javadir}/%{Name}.jar
 %if %{gcj_support}
 %{_libdir}/gcj/%{name}
