@@ -14,6 +14,7 @@ URL:		http://sourceforge.net/projects/project-x
 Source:		%{Name}_Source_eng_%{version}.tar.bz2
 Source1:	%{Name}_LanguagePack_%{version}.zip
 Group:		Video
+BuildRoot:	%{_tmppath}/%{name}-buildroot
 Requires:	java
 Requires:	jpackage-utils
 Requires:	jakarta-commons-net
