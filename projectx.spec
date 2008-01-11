@@ -84,17 +84,6 @@ convert resources/x.gif -resize 16x16 %{buildroot}%{_miconsdir}/%{name}.png
 convert resources/x.gif -resize 32x32 %{buildroot}%{_iconsdir}/%{name}.png
 convert resources/x.gif -resize 48x48 %{buildroot}%{_liconsdir}/%{name}.png
 
-install -d -m755 %{buildroot}%{_menudir}
-cat > %{buildroot}%{_menudir}/%{name} << EOF
-?package(%name): \
-	needs="x11" \
-	title="%{Name}" \
-	longtitle="A video editing and demultiplexing tool" \
-	icon="%{name}.png" \
-	command="%{_bindir}/%{name}" \
-	xdg="true" \
-	section="Multimedia/Video"
-EOF
 
 desktop-file-install --vendor="" \
   --add-category="Java" \
@@ -128,7 +117,6 @@ rm -rf %{buildroot}
 %{_miconsdir}/%{name}.png
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
-%{_menudir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 
 
