@@ -29,7 +29,11 @@ Requires:	jpackage-utils
 Requires:	jakarta-commons-net
 Requires:	jakarta-oro
 BuildRequires:	java-devel
+%if %{mdkversion} >= 200810
 BuildRequires:	java-rpmbuild
+%else
+BuildRequires:	java-gcj-compat-devel
+%endif
 BuildRequires:	jakarta-commons-net
 BuildRequires:	jakarta-oro
 BuildRequires:	ImageMagick
