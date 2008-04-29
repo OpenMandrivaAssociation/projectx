@@ -13,7 +13,7 @@
 Summary:	ProjectX - a free Java based demux utility
 Name:		%name
 Version:	%version
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPL
 URL:		http://project-x.sourceforge.net/
 %if %stable
@@ -60,7 +60,14 @@ dos2unix htmls/*.html htmls/*/*.html
 
 perl -pi -e 's,classpath [a-z0-9\.\/:-]*,classpath \$CLASSPATH,' build.sh
 perl -pi -e 's,^javac ,%javac ,' build.sh
+
+%if %mdkversion <= 200800
+# We call jar manually to workaround
+# http://gcc.gnu.org/bugzilla/show_bug.cgi?id=32516
+perl -pi -e 's,^jar ,#jar ,' build.sh
+%else
 perl -pi -e 's,^jar ,%jar ,' build.sh
+%endif
 
 perl -pi -e 's,^Class-Path:.*\n,,' MANIFEST.MF
 
@@ -72,6 +79,12 @@ perl -pi -e 's/\r$//g' *.txt
 %build
 export CLASSPATH=$(build-classpath commons-net oro)
 sh -ex build.sh
+
+%if %mdkversion <= 200800
+cd build
+%jar cfvm ../ProjectX.jar ../MANIFEST.MF *
+cd -
+%endif
 
 %jar -i %Name.jar
 
