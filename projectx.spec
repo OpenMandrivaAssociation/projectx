@@ -125,13 +125,17 @@ rm -rf %{buildroot}
 %if %{gcj_support}
 %{update_gcjdb}
 %endif
+%if %mdkversion < 200900
 %{update_menus}
+%endif
 
 %postun
 %if %{gcj_support}
 %{clean_gcjdb}
 %endif
+%if %mdkversion < 200900
 %{clean_menus}
+%endif
 
 %files
 %defattr(0644,root,root,0755)
