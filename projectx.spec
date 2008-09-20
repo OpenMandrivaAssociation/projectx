@@ -13,7 +13,7 @@
 Summary:	ProjectX - a free Java based demux utility
 Name:		%name
 Version:	%version
-Release:	%mkrel 5
+Release:	%mkrel 6
 License:	GPL
 URL:		http://project-x.sourceforge.net/
 %if %stable
@@ -24,7 +24,7 @@ Source:		%{name}-%{version}.tar.bz2
 %endif
 Group:		Video
 BuildRoot:	%{_tmppath}/%{name}-buildroot
-Requires:	java
+Requires:	java >= 1.6
 Requires:	jpackage-utils
 Requires:	jakarta-commons-net
 Requires:	jakarta-oro
