@@ -36,7 +36,7 @@ BuildRequires:	java-gcj-compat-devel
 %endif
 BuildRequires:	jakarta-commons-net
 BuildRequires:	jakarta-oro
-BuildRequires:	ImageMagick
+BuildRequires:	imagemagick
 BuildRequires:	dos2unix
 BuildRequires:  desktop-file-utils
 %if %{gcj_support}
