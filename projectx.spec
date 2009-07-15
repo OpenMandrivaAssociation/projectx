@@ -1,7 +1,7 @@
 
 %define name	projectx
 %define Name	ProjectX
-%define version	0.90.4.00.b24
+%define version	0.90.4.00.b31
 %define shortv	0.90.4
 %define gcj_support 1
 %if %mdkversion >= 200810
@@ -10,17 +10,17 @@
 %endif
 %define stable	0
 
-Summary:	ProjectX - a free Java based demux utility
+Summary:	ProjectX - a free Java based MPEG demux utility
 Name:		%name
 Version:	%version
-Release:	%mkrel 6
+Release:	%mkrel 1
 License:	GPL
 URL:		http://project-x.sourceforge.net/
 %if %stable
 Source:		%{Name}_Source_eng_%{version}.tar.bz2
 Source1:	%{Name}_LanguagePack_%{version}.zip
 %else
-Source:		%{name}-%{version}.tar.bz2
+Source:		%{name}-%{version}.tar.xz
 %endif
 Group:		Video
 BuildRoot:	%{_tmppath}/%{name}-buildroot
