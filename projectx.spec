@@ -10,7 +10,7 @@
 %endif
 %define stable	0
 
-Summary:	ProjectX - a free Java based MPEG demux utility
+Summary:	A free Java based MPEG demux utility
 Name:		%name
 Version:	%version
 Release:	%mkrel 1
