@@ -1,7 +1,7 @@
 
 %define name	projectx
 %define Name	ProjectX
-%define version	0.90.4.00.b31
+%define version	0.90.4.00.b32
 %define shortv	0.90.4
 %define gcj_support 1
 %if %mdkversion >= 200810
@@ -14,12 +14,17 @@ Summary:	A free Java based MPEG demux utility
 Name:		%name
 Version:	%version
 Release:	%mkrel 1
-License:	GPL
+License:	GPLv2+
 URL:		http://project-x.sourceforge.net/
 %if %stable
 Source:		%{Name}_Source_eng_%{version}.tar.bz2
 Source1:	%{Name}_LanguagePack_%{version}.zip
 %else
+# Every CVS push (usually) corresponds to a .bXX tag.
+# Latest tag can be seen in the commit message and in
+# http://project-x.sourceforge.net/update/update.txt
+# cvs -d:pserver:anonymous@project-x.cvs.sourceforge.net:/cvsroot/project-x login 
+# cvs -z3 -d:pserver:anonymous@project-x.cvs.sourceforge.net:/cvsroot/project-x co -P project-x
 Source:		%{name}-%{version}.tar.xz
 %endif
 Group:		Video
