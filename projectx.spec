@@ -1,8 +1,8 @@
 
 %define name	projectx
 %define Name	ProjectX
-%define version	0.90.4.00.b32
-%define shortv	0.90.4
+%define version	0.91.0
+%define shortv	0.91.0
 %define gcj_support 1
 %if %mdkversion >= 200810
 # (Anssi 02/2008) gcj4.3 segfault
@@ -25,7 +25,7 @@ Source1:	%{Name}_LanguagePack_%{version}.zip
 # http://project-x.sourceforge.net/update/update.txt
 # cvs -d:pserver:anonymous@project-x.cvs.sourceforge.net:/cvsroot/project-x login 
 # cvs -z3 -d:pserver:anonymous@project-x.cvs.sourceforge.net:/cvsroot/project-x co -P project-x
-Source:		%{name}-%{version}.tar.xz
+Source:		%{name}-%{version}.zip
 %endif
 Group:		Video
 BuildRoot:	%{_tmppath}/%{name}-buildroot
@@ -57,7 +57,7 @@ Converts, splits and demuxes DVB and other MPEG recordings.
 %if %stable
 %setup -q -n %{Name}_Source_%{shortv} -b 1
 %else
-%setup -q -n Project-X
+%setup -q -n Project-X_%{shortv}
 %endif
 rm -rf lib
 find -name CVS -type d -print0 | xargs -0 rm -rf
@@ -144,7 +144,7 @@ rm -rf %{buildroot}
 
 %files
 %defattr(0644,root,root,0755)
-%doc ReadMe.txt htmls zutun.txt
+%doc ReadMe.txt htmls
 %attr(0755,root,root) %{_bindir}/%{name}
 %{_javadir}/%{Name}.jar
 %if %{gcj_support}
