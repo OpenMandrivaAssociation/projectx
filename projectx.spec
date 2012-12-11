@@ -157,3 +157,93 @@ rm -rf %{buildroot}
 
 
 
+
+
+%changelog
+* Sat Apr 30 2011 Olivier Faurax <ofaurax@mandriva.org> 0.91.0-1mdv2011.0
++ Revision: 661101
+- Version 0.91.0
+
+* Tue Aug 17 2010 Anssi Hannula <anssi@mandriva.org> 0.90.4.00.b32-1mdv2011.0
++ Revision: 570717
+- new version
+- update license tag for policy
+- remove name from summary
+
+* Wed Jul 15 2009 Anssi Hannula <anssi@mandriva.org> 0.90.4.00.b31-1mdv2010.0
++ Revision: 396164
+- new version
+- clarify summary
+
+  + Oden Eriksson <oeriksson@mandriva.com>
+    - lowercase ImageMagick
+
+* Sat Sep 20 2008 Anssi Hannula <anssi@mandriva.org> 0.90.4.00.b24-6mdv2009.0
++ Revision: 286260
+- requires java >= 1.6 (fixes #43632)
+
+* Fri Sep 19 2008 Alexander Kurtakov <akurtakov@mandriva.org> 0.90.4.00.b24-5mdv2009.0
++ Revision: 285837
+- rebuild
+
+* Fri Aug 08 2008 Thierry Vignaud <tv@mandriva.org> 0.90.4.00.b24-4mdv2009.0
++ Revision: 269012
+- rebuild early 2009.0 package (before pixel changes)
+
+  + Pixel <pixel@mandriva.com>
+    - rpm filetriggers deprecates update_menus/update_scrollkeeper/update_mime_database/update_icon_cache/update_desktop_database/post_install_gconf_schemas
+
+* Tue Apr 29 2008 Anssi Hannula <anssi@mandriva.org> 0.90.4.00.b24-3mdv2009.0
++ Revision: 198963
++ rebuild (emptylog)
+
+* Tue Apr 29 2008 Anssi Hannula <anssi@mandriva.org> 0.90.4.00.b24-2mdv2009.0
++ Revision: 198915
+- fix backportability (for old jar)
+- add backportability buildrequires
+- 0.90.4.00.b24
+- drop gcj precompilation for now due to ICEs
+- buildrequire java-rpmbuild, i.e. build with icedtea on x86(_64)
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - drop old menu
+    - kill re-definition of %%buildroot on Pixel's request
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Sat Sep 15 2007 Anssi Hannula <anssi@mandriva.org> 0.90.4.00-7mdv2008.0
++ Revision: 87345
+- rebuild to filter out autorequires of GCJ AOT objects
+- remove unnecessary Requires(post) on java-gcj-compat
+
+* Sat Jun 30 2007 Anssi Hannula <anssi@mandriva.org> 0.90.4.00-6mdv2008.0
++ Revision: 46155
+- disable cacao hack, now works with gcj
+- use only standard menu categories
+- workaround gjar upstream bug #32516
+
+
+* Sat Mar 10 2007 Anssi Hannula <anssi@mandriva.org> 0.90.4.00-5mdv2007.1
++ Revision: 141077
+- use cacao instead of jamvm in gui mode
+
+* Mon Mar 05 2007 Anssi Hannula <anssi@mandriva.org> 0.90.4.00-4mdv2007.1
++ Revision: 133354
+- fix group
+- drop epoch 0
+- fix menu categories
+
+* Wed Oct 18 2006 Nicolas Lécureuil <neoclust@mandriva.org> 0:0.90.4.00-3mdv2007.0
++ Revision: 65842
+-Add Buildrequires
+- import projectx-0.90.4.00-2mdv2007.0
+
+* Sat Sep 02 2006 Anssi Hannula <anssi@mandriva.org> 0:0.90.4.00-2mdv2007.0
+- requires jakarta-oro
+- more docs
+- force jamvm when gui is used, 10x slower but works (gcj is too old)
+
+* Sat Jun 17 2006 Anssi Hannula <anssi@mandriva.org> 0:0.90.4.00-1mdv2007.0
+- initial Mandriva release
+
