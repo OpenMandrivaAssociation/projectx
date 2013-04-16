@@ -1,7 +1,4 @@
-
-%define name	projectx
 %define Name	ProjectX
-%define version	0.91.0
 %define shortv	0.91.0
 %define gcj_support 1
 %if %mdkversion >= 200810
@@ -11,9 +8,9 @@
 %define stable	0
 
 Summary:	A free Java based MPEG demux utility
-Name:		%name
-Version:	%version
-Release:	%mkrel 1
+Name:		projectx
+Version:	0.91.0
+Release:	2
 License:	GPLv2+
 URL:		http://project-x.sourceforge.net/
 %if %stable
@@ -28,7 +25,6 @@ Source1:	%{Name}_LanguagePack_%{version}.zip
 Source:		%{name}-%{version}.zip
 %endif
 Group:		Video
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 Requires:	java >= 1.6
 Requires:	jpackage-utils
 Requires:	jakarta-commons-net
@@ -94,8 +90,6 @@ cd -
 %jar -i %Name.jar
 
 %install
-rm -rf %{buildroot}
-
 install -d -m755 %{buildroot}%{_javadir}
 install -m644 %{Name}.jar %{buildroot}%{_javadir}
 
@@ -124,22 +118,15 @@ desktop-file-install --vendor="" \
   --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
 %clean
-rm -rf %{buildroot}
 
-%post
 %if %{gcj_support}
+%post
 %{update_gcjdb}
 %endif
-%if %mdkversion < 200900
-%{update_menus}
-%endif
 
-%postun
 %if %{gcj_support}
+%postun
 %{clean_gcjdb}
-%endif
-%if %mdkversion < 200900
-%{clean_menus}
 %endif
 
 %files
