@@ -10,7 +10,7 @@
 Summary:	A free Java based MPEG demux utility
 Name:		projectx
 Version:	0.91.0
-Release:	4
+Release:	5
 License:	GPLv2+
 URL:		http://project-x.sourceforge.net/
 %if %stable
