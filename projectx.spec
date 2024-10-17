@@ -12,7 +12,7 @@ Name:		projectx
 Version:	0.91.0
 Release:	5
 License:	GPLv2+
-URL:		http://project-x.sourceforge.net/
+URL:		https://project-x.sourceforge.net/
 %if %stable
 Source:		%{Name}_Source_eng_%{version}.tar.bz2
 Source1:	%{Name}_LanguagePack_%{version}.zip
